@@ -7,6 +7,9 @@
 data/*/
 implementations/*/data
 implementations/*/images
+implementations/*/doe
 implementations/*/saved_models
 
 __pycache__
+
+venv
