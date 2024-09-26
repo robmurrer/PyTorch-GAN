@@ -17,9 +17,9 @@ import torch
 os.makedirs("images", exist_ok=True)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--n_epochs", type=int, default=100, help="number of epochs of training")
+parser.add_argument("--n_epochs", type=int, default=200, help="number of epochs of training")
 parser.add_argument("--batch_size", type=int, default=64, help="size of the batches")
-parser.add_argument("--lr", type=float, default=0.001, help="adam: learning rate")
+parser.add_argument("--lr", type=float, default=0.0002, help="adam: learning rate")
 parser.add_argument("--b1", type=float, default=0.5, help="adam: decay of first order momentum of gradient")
 parser.add_argument("--b2", type=float, default=0.999, help="adam: decay of first order momentum of gradient")
 parser.add_argument("--n_cpu", type=int, default=8, help="number of cpu threads to use during batch generation")
@@ -127,6 +127,10 @@ for epoch in range(opt.n_epochs):
 
         # Configure input
         real_imgs = Variable(imgs.type(Tensor))
+
+        # -----------------
+        #  Train Generator
+        # -----------------
 
         optimizer_G.zero_grad()
 

@@ -6,8 +6,8 @@
 
 data/*/
 implementations/*/data
-implementations/*/images
-implementations/*/doe
+implementations/*/images*
+implementations/*/doe*
 implementations/*/saved_models
 
 __pycache__
