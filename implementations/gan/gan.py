@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 DEBUG = False
 #DEBUG = True #uncomment this line to debug
 iters = 1
-epochs = 50 
+epochs = 200 
 
 if DEBUG:
     epochs = 2 
