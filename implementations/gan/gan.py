@@ -21,11 +21,12 @@ import torch
 import matplotlib.pyplot as plt
 
 DEBUG = False
+#DEBUG = True #uncomment this line to debug
 iters = 1
-epochs = 200
+epochs = 50 
 
 if DEBUG:
-    epochs = 10
+    epochs = 2 
     iters = 3 # corner analysis
 
 def minutes_in_day():
@@ -34,7 +35,7 @@ def minutes_in_day():
     return f"{minutes:04d}"
 
 ruid_ = datetime.now().strftime("%Y.%m.%d.") + minutes_in_day()
-ruid_dir = "doe/" + ruid_ + "/"
+ruid_dir = "doe/orig/" + ruid_ + "/"
 
 os.makedirs(ruid_dir, exist_ok=False) # throw if we collide :)
 parser = argparse.ArgumentParser()
@@ -143,8 +144,8 @@ iterations = []
 epoch_times = []
 
 
-g_losses = deque(maxlen=10 * len(dataloader))
-d_losses = deque(maxlen=10 * len(dataloader))
+#g_losses = deque(maxlen=10 * len(dataloader))
+#d_losses = deque(maxlen=10 * len(dataloader))
 best_g_loss = float('inf')
 best_d_loss = float('inf')
 
@@ -253,10 +254,10 @@ with open(ruid_dir + 'gan_results.json', 'w') as f:
 
 # Write timing information to text file
     with open(ruid_dir + 'training_times.txt', 'w') as f:
-        f.write(f"Average epoch time: {timedelta(seconds=avg_epoch_time)}\n")
-        f.write("Individual epoch times:\n")
+        f.write(f"Average iter time: {timedelta(seconds=avg_epoch_time)}\n")
+        f.write("Individual iter times:\n")
         for i, t in enumerate(epoch_times):
-            f.write(f"Epoch {i}: {timedelta(seconds=t)}\n")
+            f.write(f"iter {i}: {timedelta(seconds=t)}\n")
 
     print("Training completed. Results saved to gan_results.json")
     print(f"Best Generator saved to: {results['best_generator_path']}")
