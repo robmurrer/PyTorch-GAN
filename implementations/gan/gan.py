@@ -20,7 +20,7 @@ import torch
 
 import matplotlib.pyplot as plt
 
-DEBUG = True
+DEBUG = False
 iters = 1
 epochs = 200
 
